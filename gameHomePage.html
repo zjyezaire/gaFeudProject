@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="gameHomePageCss.css">
+    <script src="app.js"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Family Feud Style Game</title>
     <audio src="/familyFeudSong.mp3" autoplay></audio>
 
+</head>
+
+<body>
+
+
+    <div class="gameBoard">
+        <!-- Scores -->
+        <div class="score" id="team1Score">Team 1: 0</div>
+        <div class="score" id="team2Score">Team 2: 0</div>
+
+        <!-- Question -->
+        <div class="questionHolder">
+            <span class="question">Question: Name a popular fruit.</span>
+        </div>
+
+        <!-- Answers -->
+        <div class="answerBoard">
+            <div class="answer" data-points="10">Apple</div>
+            <div class="answer" data-points="8">Banana</div>
+            <div class="answer" data-points="6">Grapes</div>
+            <div class="answer" data-points="4">Orange</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btnHolder">
+            <button class="button" onclick="awardPoints(1)">Award Team 1</button>
+            <button class="button" onclick="newQuestion()">New Question</button>
+            <button class="button" onclick="awardPoints(2)">Award Team 2</button>
+        </div>
+    </div>
+
 </body>
+
 </html>
