@@ -10,36 +10,39 @@
     <title>Family Feud Style Game</title>
     <audio src="/familyFeudSong.mp3" autoplay></audio>
 
-</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* Full viewport height */
+        margin: 0;
+        flex-direction: column;
+        /* Stack items vertically */
+        background-color: #f0f0f0;
+        /* Optional background color */
+    }
+
+    img {
+        margin-bottom: 20px;
+        /* Space between image and button */
+    }
+
+    button {
+        padding: 50px 40px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
 
 <body>
 
+    <!-- Centered Image -->
+    <img src="gALogo.jpg" alt="General Assembly Logo" width="1000" height="600">
 
-    <div class="gameBoard">
-        <!-- Scores -->
-        <div class="score" id="team1Score">Team 1: 0</div>
-        <div class="score" id="team2Score">Team 2: 0</div>
+    <button class="redirect-button" onclick="window.location.href='roundOne.html'">START GAME</button>
 
-        <!-- Question -->
-        <div class="questionHolder">
-            <span class="question">Question: Name a popular fruit.</span>
-        </div>
-
-        <!-- Answers -->
-        <div class="answerBoard">
-            <div class="answer" data-points="10">Apple</div>
-            <div class="answer" data-points="8">Banana</div>
-            <div class="answer" data-points="6">Grapes</div>
-            <div class="answer" data-points="4">Orange</div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="btnHolder">
-            <button class="button" onclick="awardPoints(1)">Award Team 1</button>
-            <button class="button" onclick="newQuestion()">New Question</button>
-            <button class="button" onclick="awardPoints(2)">Award Team 2</button>
-        </div>
-    </div>
 
 </body>
 
