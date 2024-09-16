@@ -1,0 +1,52 @@
+/* Basic reset */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Centering content */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2e467b, #3b5998, #192f6a);
+    color: white;
+    text-align: center;
+}
+
+/* Centered text styling */
+.centered-text {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Button styling */
+.redirect-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #ff5733;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.redirect-button:hover {
+    background-color: #c70039;
+}
+
+.redirect-button:active {
+    transform: scale(0.95);
+
+    
+}
+
