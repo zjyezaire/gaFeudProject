@@ -35,3 +35,17 @@ function newQuestion() {
     alert('New Question Coming Soon!');
     // Implement the logic for loading a new question here
 }
+
+const gameRounds = 3;
+
+function endGame() {
+    for(let x = 1; x <= gameRounds; x++) {
+        if (x === 3) {
+            if (team1Score > team2Score)
+                alert('Game Over. Team 1 Wins!!')
+        }
+
+    }
+}
+
+endGame();
