@@ -4,6 +4,7 @@ var app = {
   totalRounds: 3, // Define the total number of rounds
   currentRound: 0, // Track the current round
   jsonFile: "gameQuestions.json",
+  soundEffect: new Audio('ffDingSound.mp3'), // Load the sound effect (update the path accordingly)
   board: $("<div class='gameBoard'>" +
     "<!--- Scores --->" +
     "<div class='score' id='boardScore'>0</div>" +
@@ -109,6 +110,10 @@ var app = {
       var card = $('.card', this);
       var flipped = $(card).data("flipped");
       var cardRotate = (flipped) ? 0 : -180;
+
+      // Play the sound effect when the card is clicked
+      app.soundEffect.play();
+
       TweenLite.to(card, 1, { rotationX: cardRotate, ease: Back.easeOut });
       flipped = !flipped;
       $(card).data("flipped", flipped);
@@ -203,7 +208,7 @@ var app = {
     app.board.find('#awardTeam2').on('click', app.awardPoints);
     app.board.find('.xButton').on('click', function() {
       // Example action: hide the game board
-      //app.board.hide();
+      app.board.hide();
       alert("Game closed!");
     });
   }
