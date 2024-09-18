@@ -1,3 +1,20 @@
+const modal = document.querySelector(".modal")
+const closeBtn = document.querySelector(".close-button")
+const modalDisplay = document.querySelector("#modalMessage")
+
+const modalX = document.querySelector("#xModal")
+const closeBtnX = document.querySelector(".close-buttonX")
+const modalDisplayX = document.querySelector("#modalX")
+let numberOfXs = ""
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none"
+})
+
+closeBtnX.addEventListener("click", () => {
+  modalX.style.display = "none"
+})
+
 var app = {
   version: 1,
   currentQ: 0,
@@ -174,11 +191,14 @@ var app = {
 
       // Declare the winner
       if (team1Score > team2Score) {
-        alert("Team 1 wins with " + team1Score + " points!");
+        modalDisplay.innerText = "Team 1 wins with " + team1Score + " points!"
+        modal.style.display = "block"
       } else if (team2Score > team1Score) {
-        alert("Team 2 wins with " + team2Score + " points!");
+        modalDisplay.innerText = "Team 2 wins with " + team2Score + " points!"
+        modal.style.display = "block"
       } else {
-        alert("It's a tie! Both teams have " + team1Score + " points!");
+        modalDisplay.innerText = "It's a tie! Both teams have " + team1Score + " points!"
+        modal.style.display = "block"
       }
 
       // Disable buttons to end the game
@@ -207,11 +227,20 @@ var app = {
     app.board.find('#awardTeam1').on('click', app.awardPoints);
     app.board.find('#awardTeam2').on('click', app.awardPoints);
     app.board.find('.xButton').on('click', function() {
-      // Example action: hide the game board
-      app.board.hide();
-      alert("Game closed!");
+      numberOfXs += "X"
+      
+      if (numberOfXs.length >=3) {
+        modalDisplayX.innerText = "Your turn is over!! " + numberOfXs
+      } else {
+        modalDisplayX.innerText = numberOfXs
+      }
+
+      modalX.style.display = "block"
     });
   }
 };
 
 app.init();
+
+
+
