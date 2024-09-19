@@ -19,11 +19,11 @@ closeBtnX.addEventListener("click", () => {
 const app = {
   version: 1,
   currentQ: 0,
-  totalRounds: 3, // Define the total number of rounds
-  currentRound: 0, // Track the current round
+  totalRounds: 3, 
+  currentRound: 0, 
   jsonFile: "gameQuestions.json",
-  soundEffect: new Audio("ffDingSound.mp3"), // Load the card flip sound
-  closeSound: new Audio("ffBuzzerSound.mp3"), // Load the sound for the "X" button (update the path)
+  soundEffect: new Audio("ffDingSound.mp3"), 
+  closeSound: new Audio("ffBuzzerSound.mp3"), 
   board: $(
     "<div class='gameBoard'>" +
       "<!--- Scores --->" +
@@ -238,6 +238,8 @@ const app = {
     app.board.find("#awardTeam2").on("click", app.awardPoints);
     app.board.find(".xButton").on("click", function () {
       numberOfXs += "X";
+
+      app.closeSound.play()
 
       if (numberOfXs.length >= 3) {
         modalDisplayX.innerText = "Your turn is over!! " + numberOfXs;

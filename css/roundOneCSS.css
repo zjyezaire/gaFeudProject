@@ -236,43 +236,29 @@ body {
     border-radius: 0 50px 50px 0;
 }
 
-/* X Button Styling - matching other buttons */
 .xButton {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
-    /* Match the font size of other buttons */
     margin: 10px;
     height: 50px;
-    /* Same height as other buttons */
     line-height: 50px;
     width: 175px;
-    /* Same width as other buttons */
     border: 3px solid white;
-    /* Match the white border */
     background: linear-gradient(to bottom, #7db9e8 0%, #1e5799 100%);
-    /* Same gradient as other buttons */
     color: white;
-    /* Button text color */
     text-align: center;
     border-radius: 50px;
-    /* Optional: add border radius to match buttons */
     box-shadow: 0 1px 24px 1px rgba(0, 0, 0, 0.48);
-    /* Match box shadow */
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Optional: Hover effect to match other buttons */
 .xButton:hover {
     background-color: #2989d8;
-    /* Slightly change the background color on hover */
     box-shadow: 0 1px 24px 1px rgba(0, 0, 0, 0.6);
-    /* Slightly darker shadow on hover */
     transform: scale(1.05);
-    /* Slight zoom effect */
 }
 
-/* Optional: Active effect when button is pressed */
 .xButton:active {
     transform: scale(0.95);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
@@ -296,14 +282,10 @@ body {
     color: white;
     text-align: center;
     margin-top: 10px;
-    /* Adjusts spacing below "New Question" */
     display: block;
-    /* Ensures it is on its line, below "New Question" */
 }
-/* Modal container */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -341,10 +323,9 @@ body {
 }
 
 
-/*
-/* Modal container */
+
 .modal {
-  display: none; /* Hidden by default */
+  display: none; 
   position: fixed; 
   z-index: 1000;
   left: 0;
@@ -381,9 +362,8 @@ body {
 }
 
 
-/* /* Modal container */
 .modal {
-  display: none; /* Hidden by default */
+  display: none; 
   position: fixed; 
   z-index: 1000;
   left: 0;

@@ -1,4 +1,3 @@
-/* Basic reset */
 body,
 html {
     margin: 0;
@@ -7,7 +6,6 @@ html {
     font-family: Arial, sans-serif;
 }
 
-/* Centering content */
 .container {
     display: flex;
     flex-direction: column;
@@ -19,14 +17,12 @@ html {
     text-align: center;
 }
 
-/* Centered text styling */
 .centered-text {
     font-size: 2rem;
     margin-bottom: 20px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Button styling */
 .redirect-button {
     padding: 15px 30px;
     font-size: 1.2rem;

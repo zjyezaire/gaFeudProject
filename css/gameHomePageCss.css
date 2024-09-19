@@ -19,23 +19,17 @@ html {
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* Take full screen height */
     text-align: center;
 }
 
-/* Logo Styling */
 #logo {
     width: 800px;
-    /* Adjust size based on your logo */
     margin-bottom: 30px;
 }
 
-/* Button Styling */
 .start-button {
     background-color: #ffcc00;
-    /* Bright yellow for Family Feud theme */
     color: #003366;
-    /* Dark blue text */
     padding: 15px 40px;
     font-size: 1.5em;
     border-radius: 50px;
@@ -47,12 +41,9 @@ html {
 
 .start-button:hover {
     background-color: #ffdd33;
-    /* Slightly lighter yellow on hover */
     transform: scale(1.05);
-    /* Slight zoom on hover */
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     #logo {
         width: 250px;
