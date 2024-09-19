@@ -6,7 +6,6 @@ const modalX = document.querySelector("#xModal");
 const closeBtnX = document.querySelector(".close-buttonX");
 const modalDisplayX = document.querySelector("#modalX");
 let numberOfXs = "";
- 
 
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
@@ -19,11 +18,11 @@ closeBtnX.addEventListener("click", () => {
 const app = {
   version: 1,
   currentQ: 0,
-  totalRounds: 3, 
-  currentRound: 0, 
+  totalRounds: 3,
+  currentRound: 0,
   jsonFile: "gameQuestions.json",
-  soundEffect: new Audio("ffDingSound.mp3"), 
-  closeSound: new Audio("ffBuzzerSound.mp3"), 
+  soundEffect: new Audio("ffDingSound.mp3"),
+  closeSound: new Audio("ffBuzzerSound.mp3"),
   board: $(
     "<div class='gameBoard'>" +
       "<!--- Scores --->" +
@@ -44,14 +43,15 @@ const app = {
       "<div id='awardTeam1' data-team='1' class='button'>Award Team 1</div>" +
       "<div id='newQuestion' class='button'>New Question</div>" +
       "<div id='awardTeam2' data-team='2' class='button'>Award Team 2</div>" +
-      "<button class='xButton'>X</button>" + // Add the X button here
+      "<button class='xButton'>X</button>" + 
       "</div>" +
       "</div>"
   ),
 
-  // Utility functions
   shuffle: function (array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -72,7 +72,6 @@ const app = {
     console.log(app);
   },
 
-  // Action functions
   makeQuestion: function (qNum) {
     const qText = app.questions[qNum];
     const qAnswr = app.allData[qText];
@@ -137,7 +136,6 @@ const app = {
       let flipped = $(card).data("flipped");
       const cardRotate = flipped ? 0 : -180;
 
-      // Play the sound effect when the card is clicked
       app.soundEffect.play();
 
       TweenLite.to(card, 1, { rotationX: cardRotate, ease: Back.easeOut });
@@ -239,7 +237,7 @@ const app = {
     app.board.find(".xButton").on("click", function () {
       numberOfXs += "X";
 
-      app.closeSound.play()
+      app.closeSound.play();
 
       if (numberOfXs.length >= 3) {
         modalDisplayX.innerText = "Your turn is over!! " + numberOfXs;

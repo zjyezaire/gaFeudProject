@@ -48,7 +48,6 @@ body {
     max-height: 800px;
     min-width: 305px;
     margin: auto;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/40041/bgFF.svg') #27537a;
     background-repeat: repeat;
     background-position: center center;
     -webkit-box-shadow: 0 1px 24px 1px rgba(0, 0, 0, 0.48);
