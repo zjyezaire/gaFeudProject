@@ -14,7 +14,7 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #4c669f, #3b5998, #192f6a);
+    background: linear-gradient(135deg, #2e467b, #3b5998, #192f6a);
     color: white;
     text-align: center;
 }
@@ -30,8 +30,8 @@ html {
 .redirect-button {
     padding: 15px 30px;
     font-size: 1.2rem;
-    color: #fff;
-    background-color: #ff5733;
+    color: #000000;
+    background-color: #f6e41e;
     border: none;
     border-radius: 5px;
     cursor: pointer;

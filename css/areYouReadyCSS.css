@@ -30,8 +30,8 @@ html {
 .redirect-button {
     padding: 15px 30px;
     font-size: 1.2rem;
-    color: #fff;
-    background-color: #ff5733;
+    color: #000000;
+    background-color: #f6e41e;
     border: none;
     border-radius: 5px;
     cursor: pointer;

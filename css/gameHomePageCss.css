@@ -1,20 +1,18 @@
-/* Reset browser default margins and paddings */
+
+
+body,
+html {
+    height: 100%;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #0b63ba;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Set up the entire body to fill the screen */
-body,
-html {
-    height: 100%;
-    font-family: 'Open Sans', Arial, sans-serif;
-    background-color: #003366;
-    /* Dark blue background */
-}
-
-/* Flexbox container to center content */
 .landing-container {
     display: flex;
     flex-direction: column;
@@ -27,7 +25,7 @@ html {
 
 /* Logo Styling */
 #logo {
-    width: 300px;
+    width: 800px;
     /* Adjust size based on your logo */
     margin-bottom: 30px;
 }

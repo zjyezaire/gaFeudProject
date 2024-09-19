@@ -6,6 +6,7 @@ const modalX = document.querySelector("#xModal");
 const closeBtnX = document.querySelector(".close-buttonX");
 const modalDisplayX = document.querySelector("#modalX");
 let numberOfXs = "";
+ 
 
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
