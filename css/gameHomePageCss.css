@@ -1,29 +1,35 @@
+/* Basic reset */
 body,
 html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    height: 100%;
 }
 
-
+/* Centering content */
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #2e467b, #3b5998, #192f6a);
-    color: white;
+    background: linear-gradient(135deg, #4c669f, #3b5998, #192f6a);
+    /* Similar gradient */
     text-align: center;
+    color: white;
 }
 
-.centered-text {
-    font-size: 2rem;
+/* Logo styling */
+#logo {
+    width: 500px;
+    /* Adjusted to the specific dimensions you provided */
+    height: auto;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Button styling */
 .redirect-button {
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -32,19 +38,17 @@ html {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
+/* Button hover effect */
 .redirect-button:hover {
     background-color: #c70039;
 }
 
+/* Button active click effect */
 .redirect-button:active {
     transform: scale(0.95);
-
-    
 }
-
-
-

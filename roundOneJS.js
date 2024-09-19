@@ -1,58 +1,57 @@
-const modal = document.querySelector(".modal")
-const closeBtn = document.querySelector(".close-button")
-const modalDisplay = document.querySelector("#modalMessage")
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector(".close-button");
+const modalDisplay = document.querySelector("#modalMessage");
 
-const modalX = document.querySelector("#xModal")
-const closeBtnX = document.querySelector(".close-buttonX")
-const modalDisplayX = document.querySelector("#modalX")
-let numberOfXs = ""
+const modalX = document.querySelector("#xModal");
+const closeBtnX = document.querySelector(".close-buttonX");
+const modalDisplayX = document.querySelector("#modalX");
+let numberOfXs = "";
 
 closeBtn.addEventListener("click", () => {
-  modal.style.display = "none"
-})
+  modal.style.display = "none";
+});
 
 closeBtnX.addEventListener("click", () => {
-  modalX.style.display = "none"
-})
+  modalX.style.display = "none";
+});
 
-var app = {
+const app = {
   version: 1,
   currentQ: 0,
   totalRounds: 3, // Define the total number of rounds
   currentRound: 0, // Track the current round
   jsonFile: "gameQuestions.json",
-  soundEffect: new Audio('ffDingSound.mp3'), // Load the sound effect (update the path accordingly)
-  board: $("<div class='gameBoard'>" +
-    "<!--- Scores --->" +
-    "<div class='score' id='boardScore'>0</div>" +
-    "<div class='score' id='team1'>0</div>" +
-    "<div class='score' id='team2'>0</div>" +
-
-    "<!--- Question --->" +
-    "<div class='questionHolder'>" +
-    "<span class='question'></span>" +
-    "</div>" +
-
-    "<!--- Answers --->" +
-    "<div class='colHolder'>" +
-    "<div class='col1'></div>" +
-    "<div class='col2'></div>" +
-    "</div>" +
-
-    "<!--- Buttons --->" +
-    "<div class='btnHolder'>" +
-    "<div id='awardTeam1' data-team='1' class='button'>Award Team 1</div>" +
-    "<div id='newQuestion' class='button'>New Question</div>" +
-    "<div id='awardTeam2' data-team='2' class='button'>Award Team 2</div>" +
-    "<button class='xButton'>X</button>" + // Add the X button here
-    "</div>" +
-
-    "</div>"),
+  soundEffect: new Audio("ffDingSound.mp3"), // Load the card flip sound
+  closeSound: new Audio("ffBuzzerSound.mp3"), // Load the sound for the "X" button (update the path)
+  board: $(
+    "<div class='gameBoard'>" +
+      "<!--- Scores --->" +
+      "<div class='score' id='boardScore'>0</div>" +
+      "<div class='score' id='team1'>0</div>" +
+      "<div class='score' id='team2'>0</div>" +
+      "<!--- Question --->" +
+      "<div class='questionHolder'>" +
+      "<span class='question'></span>" +
+      "</div>" +
+      "<!--- Answers --->" +
+      "<div class='colHolder'>" +
+      "<div class='col1'></div>" +
+      "<div class='col2'></div>" +
+      "</div>" +
+      "<!--- Buttons --->" +
+      "<div class='btnHolder'>" +
+      "<div id='awardTeam1' data-team='1' class='button'>Award Team 1</div>" +
+      "<div id='newQuestion' class='button'>New Question</div>" +
+      "<div id='awardTeam2' data-team='2' class='button'>Award Team 2</div>" +
+      "<button class='xButton'>X</button>" + // Add the X button here
+      "</div>" +
+      "</div>"
+  ),
 
   // Utility functions
   shuffle: function (array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
       temporaryValue = array[currentIndex];
@@ -61,60 +60,69 @@ var app = {
     }
     return array;
   },
+
   jsonLoaded: function (data) {
     console.clear();
     app.allData = data;
     app.questions = Object.keys(data);
     app.shuffle(app.questions);
     app.makeQuestion(app.currentQ);
-    $('body').append(app.board);
+    $("body").append(app.board);
     console.log(app);
   },
 
   // Action functions
   makeQuestion: function (qNum) {
-    var qText = app.questions[qNum];
-    var qAnswr = app.allData[qText];
+    const qText = app.questions[qNum];
+    const qAnswr = app.allData[qText];
 
-    var qNum = qAnswr.length;
-    qNum = (qNum < 8) ? 8 : qNum;
-    qNum = (qNum % 2 != 0) ? qNum + 1 : qNum;
+    let qNumAnswr = qAnswr.length;
+    qNumAnswr = qNumAnswr < 8 ? 8 : qNumAnswr;
+    qNumAnswr = qNumAnswr % 2 !== 0 ? qNumAnswr + 1 : qNumAnswr;
 
-    var boardScore = app.board.find("#boardScore");
-    var question = app.board.find(".question");
-    var col1 = app.board.find(".col1");
-    var col2 = app.board.find(".col2");
+    const boardScore = app.board.find("#boardScore");
+    const question = app.board.find(".question");
+    const col1 = app.board.find(".col1");
+    const col2 = app.board.find(".col2");
 
     boardScore.html(0);
     question.html(qText.replace(/&x22;/gi, '"'));
     col1.empty();
     col2.empty();
 
-    for (var i = 0; i < qNum; i++) {
-      var aLI;
+    for (let i = 0; i < qNumAnswr; i++) {
+      let aLI;
       if (qAnswr[i]) {
-        aLI = $("<div class='cardHolder'>" +
-          "<div class='card'>" +
-          "<div class='front'>" +
-          "<span class='DBG'>" + (i + 1) + "</span>" +
-          "</div>" +
-          "<div class='back DBG'>" +
-          "<span>" + qAnswr[i][0] + "</span>" +
-          "<b class='LBG'>" + qAnswr[i][1] + "</b>" +
-          "</div>" +
-          "</div>" +
-          "</div>");
+        aLI = $(
+          "<div class='cardHolder'>" +
+            "<div class='card'>" +
+            "<div class='front'>" +
+            "<span class='DBG'>" +
+            (i + 1) +
+            "</span>" +
+            "</div>" +
+            "<div class='back DBG'>" +
+            "<span>" +
+            qAnswr[i][0] +
+            "</span>" +
+            "<b class='LBG'>" +
+            qAnswr[i][1] +
+            "</b>" +
+            "</div>" +
+            "</div>" +
+            "</div>"
+        );
       } else {
         aLI = $("<div class='cardHolder empty'><div></div></div>");
       }
-      var parentDiv = (i < (qNum / 2)) ? col1 : col2;
+      const parentDiv = i < qNumAnswr / 2 ? col1 : col2;
       $(aLI).appendTo(parentDiv);
     }
 
-    var cardHolders = app.board.find('.cardHolder');
-    var cards = app.board.find('.card');
-    var backs = app.board.find('.back');
-    var cardSides = app.board.find('.card>div');
+    const cardHolders = app.board.find(".cardHolder");
+    const cards = app.board.find(".card");
+    const backs = app.board.find(".back");
+    const cardSides = app.board.find(".card>div");
 
     TweenLite.set(cardHolders, { perspective: 800 });
     TweenLite.set(cards, { transformStyle: "preserve-3d" });
@@ -124,9 +132,9 @@ var app = {
     cards.data("flipped", false);
 
     function showCard() {
-      var card = $('.card', this);
-      var flipped = $(card).data("flipped");
-      var cardRotate = (flipped) ? 0 : -180;
+      const card = $(".card", this);
+      let flipped = $(card).data("flipped");
+      const cardRotate = flipped ? 0 : -180;
 
       // Play the sound effect when the card is clicked
       app.soundEffect.play();
@@ -136,20 +144,24 @@ var app = {
       $(card).data("flipped", flipped);
       app.getBoardScore();
     }
-    cardHolders.on('click', showCard);
+    cardHolders.on("click", showCard);
   },
+
   getBoardScore: function () {
-    var cards = app.board.find('.card');
-    var boardScore = app.board.find('#boardScore');
-    var currentScore = { var: boardScore.html() };
-    var score = 0;
+    const cards = app.board.find(".card");
+    const boardScore = app.board.find("#boardScore");
+    const currentScore = { var: boardScore.html() };
+    let score = 0;
+
     function tallyScore() {
       if ($(this).data("flipped")) {
-        var value = $(this).find("b").html();
+        const value = $(this).find("b").html();
         score += parseInt(value);
       }
     }
+
     $.each(cards, tallyScore);
+
     TweenMax.to(currentScore, 1, {
       var: score,
       onUpdate: function () {
@@ -158,13 +170,15 @@ var app = {
       ease: Power3.easeOut,
     });
   },
+
   awardPoints: function () {
-    var num = $(this).attr("data-team");
-    var boardScore = app.board.find('#boardScore');
-    var currentScore = { var: parseInt(boardScore.html()) };
-    var team = app.board.find("#team" + num);
-    var teamScore = { var: parseInt(team.html()) };
-    var teamScoreUpdated = (teamScore.var + currentScore.var);
+    const num = $(this).attr("data-team");
+    const boardScore = app.board.find("#boardScore");
+    const currentScore = { var: parseInt(boardScore.html()) };
+    const team = app.board.find("#team" + num);
+    const teamScore = { var: parseInt(team.html()) };
+    const teamScoreUpdated = teamScore.var + currentScore.var;
+
     TweenMax.to(teamScore, 1, {
       var: teamScoreUpdated,
       onUpdate: function () {
@@ -182,65 +196,57 @@ var app = {
     });
   },
 
-  // Function to check and declare the winner after 3 rounds
   checkWinner: function () {
-    // Only check after the last round
     if (app.currentRound >= app.totalRounds) {
-      var team1Score = parseInt(app.board.find("#team1").html());
-      var team2Score = parseInt(app.board.find("#team2").html());
+      const team1Score = parseInt(app.board.find("#team1").html());
+      const team2Score = parseInt(app.board.find("#team2").html());
 
-      // Declare the winner
       if (team1Score > team2Score) {
-        modalDisplay.innerText = "Team 1 wins with " + team1Score + " points!"
-        modal.style.display = "block"
+        modalDisplay.innerText = "Team 1 wins with " + team1Score + " points!";
+        modal.style.display = "block";
       } else if (team2Score > team1Score) {
-        modalDisplay.innerText = "Team 2 wins with " + team2Score + " points!"
-        modal.style.display = "block"
+        modalDisplay.innerText = "Team 2 wins with " + team2Score + " points!";
+        modal.style.display = "block";
       } else {
-        modalDisplay.innerText = "It's a tie! Both teams have " + team1Score + " points!"
-        modal.style.display = "block"
+        modalDisplay.innerText =
+          "It's a tie! Both teams have " + team1Score + " points!";
+        modal.style.display = "block";
       }
 
-      // Disable buttons to end the game
-      app.board.find('#newQuestion, #awardTeam1, #awardTeam2, .xButton').off('click');
+      app.board
+        .find("#newQuestion, #awardTeam1, #awardTeam2, .xButton")
+        .off("click");
     }
   },
 
-  // Updated changeQuestion function to track rounds and check winner
   changeQuestion: function () {
     app.currentQ++;
-    app.currentRound++; // Increment the round counter
+    app.currentRound++;
 
-    // Check if the game should end after 3 rounds
     if (app.currentRound <= app.totalRounds) {
       app.makeQuestion(app.currentQ);
     }
 
-    // Call checkWinner after each round
     app.checkWinner();
   },
 
-  // Initial function
   init: function () {
     $.getJSON(app.jsonFile, app.jsonLoaded);
-    app.board.find('#newQuestion').on('click', app.changeQuestion);
-    app.board.find('#awardTeam1').on('click', app.awardPoints);
-    app.board.find('#awardTeam2').on('click', app.awardPoints);
-    app.board.find('.xButton').on('click', function() {
-      numberOfXs += "X"
-      
-      if (numberOfXs.length >=3) {
-        modalDisplayX.innerText = "Your turn is over!! " + numberOfXs
+    app.board.find("#newQuestion").on("click", app.changeQuestion);
+    app.board.find("#awardTeam1").on("click", app.awardPoints);
+    app.board.find("#awardTeam2").on("click", app.awardPoints);
+    app.board.find(".xButton").on("click", function () {
+      numberOfXs += "X";
+
+      if (numberOfXs.length >= 3) {
+        modalDisplayX.innerText = "Your turn is over!! " + numberOfXs;
       } else {
-        modalDisplayX.innerText = numberOfXs
+        modalDisplayX.innerText = numberOfXs;
       }
 
-      modalX.style.display = "block"
+      modalX.style.display = "block";
     });
-  }
+  },
 };
 
 app.init();
-
-
-
